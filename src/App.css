@@ -1,38 +1,134 @@
-.App {
+/* Container for the bars */
+.container {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  height: 70vh;
+  margin-top: 20px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  background-color: #f9f9f9;
+ width: 70vw;
+}
+
+/* Individual bars */
+.bar {
+  width: 20px;
+  margin: 0 2px;
+  background-color: lightgray;
   text-align: center;
+  color: white;
+  font-size: 12px;
+  border-radius: 2px;
+  transition: background-color 0.5s ease, height 0.5s ease;
+  align-items: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Button */
+button {
+  padding: 10px 20px;
+  margin-top: 10px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin: 10px;
+  width: 150px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+button:hover {
+  background-color: #0056b3;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* Highlighted bars during sorting */
+.bar.blue {
+  background-color: blue !important;
+}
+
+.bar.red {
+  background-color: red !important;
+}
+
+
+/* Main container for sidebar and sorting visualization */
+.middle-container {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  height: 100vh;
+  justify-content: center;
+}
+
+/* Sidebar container */
+.side-bar {
+  height: 100vh;
+  width: 250px;
+  background-color: #f1f1f1;
   display: flex;
   flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+  border-right: 2px solid #ccc;
+  justify-content: flex-start;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+}
+
+/* Heading styling */
+.heading {
+  align-items: center;
+  text-align: center;
+  height: 50px;
+  padding: 20px;
+  font-size: 24px;
+  font-weight: bold;
+  background-color: #007bff;
   color: white;
+  margin-bottom: 20px;
 }
 
-.App-link {
-  color: #61dafb;
+/* Select dropdown styling */
+select {
+  padding: 10px;
+  margin-top: 10px;
+  font-size: 16px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  width: 150px;
+  cursor: pointer;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+select:hover {
+  border-color: #007bff;
+}
+
+/* Right side visualization area */
+.right-side {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+}
+
+/* Responsive behavior */
+@media (max-width: 768px) {
+  .middle-container {
+    flex-direction: column;
+    align-items: center;
   }
-  to {
-    transform: rotate(360deg);
+
+  .side-bar {
+    width: 100%;
+    height: auto;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 10px;
+    border: none;
+  }
+
+  .container {
+    width: 100vw;
+    height: 50vh;
   }
 }
