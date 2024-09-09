@@ -6,8 +6,6 @@ const BubbleSort = ({ triggerSort }) => {
     array,
     setMoves,
     setCurrentMove,
-    len, // Use len from context
-    init,
     speed,setTriggerSort
   } = useContext(SortContext);
 

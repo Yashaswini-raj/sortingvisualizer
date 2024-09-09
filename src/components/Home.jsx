@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import BubbleSort from "../Algorithms/bubblesort.jsx";
 import { SortContext } from "../context/storecontext.jsx";
 import Insertionsort from "../Algorithms/insertionsort.jsx";
+import Selectionsort from "../Algorithms/selectionsort.jsx";
 
 const Home = () => {
   const [algo, setAlgo] = useState("bubbleSort");
@@ -37,8 +38,8 @@ const [triggerSort,
         return <BubbleSort triggerSort={triggerSort} />;
       case "insertionsort":
         return <Insertionsort triggerSort={triggerSort} />;
-      // case "mergesort":
-      //   return <MergeSort triggerSort={triggerSort} />;
+      case "selectionsort":
+         return <Selectionsort triggerSort={triggerSort} />;
       // case "selectionsort":
       //   return <SelectionSort triggerSort={triggerSort} />;
       default:

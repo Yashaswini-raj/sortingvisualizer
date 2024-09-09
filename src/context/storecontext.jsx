@@ -30,7 +30,7 @@ export const SortProvider=({children})=>{
               ? currentMove.type === "swap"
                 ? "red"
                 : "blue"
-              : "black",
+              : "grey",
           };
     
           return (
