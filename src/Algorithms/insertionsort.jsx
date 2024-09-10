@@ -2,7 +2,7 @@ import React, { useContext,useEffect } from 'react'
 import { SortContext } from '../context/storecontext';
 
 const Insertionsort = ({triggerSort}) => {
-    const {array,setCurrentMove,speed,setMoves}=useContext(SortContext)
+    const {array,setCurrentMove,speed,setTriggerSort,setMoves}=useContext(SortContext)
 
 
     
@@ -10,13 +10,13 @@ const Insertionsort = ({triggerSort}) => {
         console.log("TriggerSort changed:", triggerSort);
         if (triggerSort) {
           console.log("Sorting triggered");
-          play(); // Trigger sorting when "Play" is clicked
+          play(); 
         }
       }, [triggerSort]);
 
     
     const play = () => {
-        console.log("Starting bubble sort");
+        console.log("Starting insertion sort");
         const copy = [...array];
         const newMoves = insertionSort(copy);
         setMoves(newMoves);
@@ -25,7 +25,9 @@ const Insertionsort = ({triggerSort}) => {
     const animate=(moves)=>{
 
         if(moves.length===0){
-            setCurrentMove(null);
+            setMoves([]);
+             setCurrentMove(null);
+            setTriggerSort(false);
             return ;
         }
         const move=moves.shift();
@@ -33,9 +35,7 @@ const Insertionsort = ({triggerSort}) => {
         if(move.type==="swap"){
             [array[i], array[j]] = [array[j], array[i]];
         }
-        setCurrentMove(move);
-      //  console.log(speed);
-    
+        setCurrentMove(move);    
         setTimeout(() => animate(moves), speed);
 
     }

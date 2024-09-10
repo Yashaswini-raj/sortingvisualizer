@@ -21,12 +21,13 @@ export const SortProvider=({children})=>{
         setArray(newArray);
         setMoves([]);
         setCurrentMove(null);
+        setTriggerSort(false);
       };
       const showBar = () => {
         return array.map((value, index) => {
           const barStyle = {
             height: `${value * 100}%`,
-            backgroundColor: currentMove && currentMove.indices.includes(index)
+            backgroundColor: currentMove && currentMove.indices.includes(index) 
               ? currentMove.type === "swap"
                 ? "red"
                 : "blue"

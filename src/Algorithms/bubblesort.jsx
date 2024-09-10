@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
 import { SortContext } from "../context/storecontext.jsx";
 
-const BubbleSort = ({ triggerSort }) => {
+const BubbleSort = ({triggerSort}) => {
   const {
     array,
     setMoves,
@@ -9,10 +9,7 @@ const BubbleSort = ({ triggerSort }) => {
     speed,setTriggerSort
   } = useContext(SortContext);
 
-  // useEffect(() => {
-  //   init(); // Initialize array on component mount
-  //   console.log(triggerSort);
-  // }, []);
+
 
   useEffect(() => {
     console.log("TriggerSort changed:", triggerSort);
@@ -24,6 +21,7 @@ const BubbleSort = ({ triggerSort }) => {
 
   const play = () => {
     console.log("Starting bubble sort");
+    setMoves([]);
     const copy = [...array];
     const newMoves = bubbleSort(copy);
     setMoves(newMoves);
@@ -32,8 +30,9 @@ const BubbleSort = ({ triggerSort }) => {
 
   const animate = (moves) => {
     if (moves.length === 0) {
-      setCurrentMove(null);
-      setTriggerSort(false); // Reset triggerSort
+        // setMoves([]);
+        setCurrentMove(null);
+        // setTriggerSort(false);
       return;
     }
     const move = moves.shift();

@@ -12,26 +12,35 @@ const Home = () => {
     init,
     len,
     setSpeed,
-    speed
+    setMoves,
+    setCurrentMove,
+    triggerSort,
+    setTriggerSort
   } = useContext(SortContext);
+
   const handleLen = (e) => {
     setLen(e.target.valueAsNumber);
-    init(); // Reinitialize after changing length
+    init(); 
   };
-  
-const [triggerSort,
-  setTriggerSort,] =useState(false)
+  useEffect(() => {
+    init()
+    setTriggerSort(false);
+    setMoves([]);       
+    setCurrentMove(null); 
+  }, [algo]);
+
+
   useEffect(() => {
     init();
   }, []);
 
   const play = () => {
     console.log("Play button clicked");
-    setTriggerSort(true); // This will trigger the sorting in the selected componenct
+    setTriggerSort(true); 
     console.log(triggerSort)
   };
 
-  // Function to render the sorting component
+
   const renderSortingComponent = () => {
     switch (algo) {
       case "bubbleSort":
@@ -67,7 +76,7 @@ const [triggerSort,
           <select value={algo} onChange={(e) => setAlgo(e.target.value)}>
             <option value="bubbleSort">bubbleSort</option>
             <option value="insertionsort">insertionsort</option>
-            <option value="mergesort">mergesort</option>
+            {/* <option value="mergesort">mergesort</option> */}
             <option value="selectionsort">selectionsort</option>
           </select>
           <button onClick={play}>Play</button>

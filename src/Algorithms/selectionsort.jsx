@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from 'react'
 import { SortContext } from '../context/storecontext';
 
 const Selectionsort = ({triggerSort}) => {
-const {array,setMoves,setCurrentMove,speed}=useContext(SortContext)
+const {array,setMoves,setCurrentMove,setTriggerSort,speed}=useContext(SortContext)
 
     useEffect(()=>{
         if(triggerSort){
@@ -17,13 +17,15 @@ const {array,setMoves,setCurrentMove,speed}=useContext(SortContext)
         const newMoves = selectionsort(copy);
         setMoves(newMoves);
         animate(newMoves);
-        console.log(newMoves)
+       // console.log(newMoves)
     }
 
     const animate=(moves)=>{
 
         if(moves.length===0){
-            setCurrentMove(null);
+             setCurrentMove(null);
+            setTriggerSort(false);
+            setMoves([])
             return ;
         }
         const move=moves.shift();
@@ -49,7 +51,7 @@ const {array,setMoves,setCurrentMove,speed}=useContext(SortContext)
           
                 if (min_idx !== i) {
                     moves.push({ indices: [i, min_idx], type: "swap" });
-                    [array[min_idx], array[i]] = [array[i], array[min_idx]];  // Correct swap
+                    [array[min_idx], array[i]] = [array[i], array[min_idx]]; 
                    
                   }
             } 
